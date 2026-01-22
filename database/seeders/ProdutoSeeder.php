@@ -20,6 +20,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Notebook Dell Inspiron 15',
                 'descricao' => 'Notebook com processador Intel Core i7, 16GB RAM, SSD 512GB',
                 'peso' => 2000,
+                'fornecedor_id' => 5, // Suprimentos Tech
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -28,6 +29,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Mouse Wireless Logitech',
                 'descricao' => 'Mouse sem fio com tecnologia Bluetooth',
                 'peso' => 100,
+                'fornecedor_id' => 5, // Suprimentos Tech
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -36,6 +38,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Teclado Mecânico RGB',
                 'descricao' => 'Teclado mecânico com iluminação RGB personalizável',
                 'peso' => 800,
+                'fornecedor_id' => 5, // Suprimentos Tech
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -44,6 +47,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Monitor LG 27 Polegadas',
                 'descricao' => 'Monitor LED Full HD com tecnologia IPS',
                 'peso' => 5000,
+                'fornecedor_id' => 1, // Fornecedor ABC Ltda
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -52,6 +56,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Cadeira Gamer Pro',
                 'descricao' => 'Cadeira ergonômica com ajuste de altura e encosto reclinável',
                 'peso' => 18000,
+                'fornecedor_id' => 7, // Central de Produtos
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -60,6 +65,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Headset HyperX Cloud',
                 'descricao' => 'Fone de ouvido gamer com microfone removível',
                 'peso' => 300,
+                'fornecedor_id' => 5, // Suprimentos Tech
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -68,6 +74,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'SSD Kingston 1TB',
                 'descricao' => 'Unidade de estado sólido SATA III',
                 'peso' => 50,
+                'fornecedor_id' => 2, // Distribuidora XYZ S/A
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
@@ -76,6 +83,7 @@ class ProdutoSeeder extends Seeder
                 'nome' => 'Webcam Logitech Full HD',
                 'descricao' => 'Câmera web 1080p com microfone integrado',
                 'peso' => 200,
+                'fornecedor_id' => 5, // Suprimentos Tech
                 'unidade_id' => 1, // Unidade
                 'created_at' => now(),
                 'updated_at' => now()
