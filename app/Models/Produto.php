@@ -13,9 +13,6 @@ class Produto extends Model
         'nome',
         'descricao',
         'peso',
-        'preço_venda',
-        'estoque_minimo',
-        'estoque_maximo',
         'fornecedor_id'
     ];
 
@@ -25,5 +22,23 @@ class Produto extends Model
     public function fornecedor()
     {
         return $this->belongsTo(Fornecedor::class);
+    }
+
+    /**
+     * Relacionamento: Produto tem muitos ProdutoFiliais
+     */
+    public function produtoFiliais()
+    {
+        return $this->hasMany(ProdutoFilial::class);
+    }
+
+    /**
+     * Relacionamento: Produto pertence a muitas Filiais
+     */
+    public function filiais()
+    {
+        return $this->belongsToMany(Filial::class, 'produto_filiais')
+                    ->withPivot('preco_venda', 'estoque_minimo', 'estoque_maximo')
+                    ->withTimestamps();
     }
 }

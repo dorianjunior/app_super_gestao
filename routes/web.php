@@ -89,6 +89,23 @@ Route::prefix('/app')->middleware('auth')->group(function () {
     Route::get('/clientes/{id}/editar', [\App\Http\Controllers\ClienteController::class, 'edit'])->name('app.clientes.edit');
     Route::put('/clientes/{id}', [\App\Http\Controllers\ClienteController::class, 'update'])->name('app.clientes.update');
     Route::delete('/clientes/{id}', [\App\Http\Controllers\ClienteController::class, 'destroy'])->name('app.clientes.destroy');
+
+    // Rotas de Filiais (CRUD completo)
+    Route::get('/filiais', [\App\Http\Controllers\FilialController::class, 'index'])->name('app.filiais');
+    Route::get('/filiais/criar', [\App\Http\Controllers\FilialController::class, 'create'])->name('app.filiais.create');
+    Route::post('/filiais', [\App\Http\Controllers\FilialController::class, 'store'])->name('app.filiais.store');
+    Route::get('/filiais/{id}/editar', [\App\Http\Controllers\FilialController::class, 'edit'])->name('app.filiais.edit');
+    Route::put('/filiais/{id}', [\App\Http\Controllers\FilialController::class, 'update'])->name('app.filiais.update');
+    Route::delete('/filiais/{id}', [\App\Http\Controllers\FilialController::class, 'destroy'])->name('app.filiais.destroy');
+    Route::get('/filiais/{id}/produtos', [\App\Http\Controllers\FilialController::class, 'produtos'])->name('app.filiais.produtos');
+
+    // Rotas de Produtos por Filial (Gestão de Preços e Estoques)
+    Route::get('/produtos-filiais', [\App\Http\Controllers\ProdutoFilialController::class, 'index'])->name('app.produtos-filiais');
+    Route::get('/produtos-filiais/criar', [\App\Http\Controllers\ProdutoFilialController::class, 'create'])->name('app.produtos-filiais.create');
+    Route::post('/produtos-filiais', [\App\Http\Controllers\ProdutoFilialController::class, 'store'])->name('app.produtos-filiais.store');
+    Route::get('/produtos-filiais/{id}/editar', [\App\Http\Controllers\ProdutoFilialController::class, 'edit'])->name('app.produtos-filiais.edit');
+    Route::put('/produtos-filiais/{id}', [\App\Http\Controllers\ProdutoFilialController::class, 'update'])->name('app.produtos-filiais.update');
+    Route::delete('/produtos-filiais/{id}', [\App\Http\Controllers\ProdutoFilialController::class, 'destroy'])->name('app.produtos-filiais.destroy');
 });
 
 Route::fallback(function(){

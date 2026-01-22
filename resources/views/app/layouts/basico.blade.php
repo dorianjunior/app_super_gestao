@@ -58,9 +58,17 @@
                 <i class="fas fa-truck"></i>
                 <span>Fornecedores</span>
             </a>
-            <a class="nav-link {{ request()->routeIs('app.produtos*') ? 'active' : '' }}" href="{{ route('app.produtos') }}">
+            <a class="nav-link {{ request()->routeIs('app.produtos') || request()->routeIs('app.produtos.create') || request()->routeIs('app.produtos.edit') || request()->routeIs('app.produtos.store') || request()->routeIs('app.produtos.update') || request()->routeIs('app.produtos.destroy') ? 'active' : '' }}" href="{{ route('app.produtos') }}">
                 <i class="fas fa-box"></i>
                 <span>Produtos</span>
+            </a>
+            <a class="nav-link {{ request()->routeIs('app.filiais*') ? 'active' : '' }}" href="{{ route('app.filiais') }}">
+                <i class="fas fa-store"></i>
+                <span>Filiais</span>
+            </a>
+            <a class="nav-link {{ request()->routeIs('app.produtos-filiais*') ? 'active' : '' }}" href="{{ route('app.produtos-filiais') }}">
+                <i class="fas fa-boxes"></i>
+                <span>Produtos por Filial</span>
             </a>
             <a class="nav-link {{ request()->routeIs('app.clientes*') ? 'active' : '' }}" href="{{ route('app.clientes') }}">
                 <i class="fas fa-users"></i>
@@ -77,21 +85,8 @@
             @yield('header-actions')
         </div>
 
-        <!-- Alertas -->
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        @endif
-
-        @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fas fa-exclamation-circle me-2"></i>{{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        @endif
-
+        <!-- Alertas (agora gerenciados pelo SweetAlert2) -->
+        
         @if($errors->any())
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <i class="fas fa-exclamation-triangle me-2"></i>
@@ -111,6 +106,62 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts Personalizados -->
+    <script>
+        // Substituir alertas de sessão por SweetAlert2
+        @if(session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso!',
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#28a745',
+                timer: 3000,
+                timerProgressBar: true
+            });
+        @endif
+
+        @if(session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: '{{ session('error') }}',
+                confirmButtonColor: '#dc3545'
+            });
+        @endif
+
+        // Substituir confirmações de exclusão por SweetAlert2
+        document.addEventListener('DOMContentLoaded', function() {
+            // Para todos os formulários de exclusão
+            const deleteForms = document.querySelectorAll('form[onsubmit*="confirm"]');
+            
+            deleteForms.forEach(form => {
+                form.removeAttribute('onsubmit');
+                
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    Swal.fire({
+                        title: 'Tem certeza?',
+                        text: "Esta ação não poderá ser revertida!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#dc3545',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: 'Sim, excluir!',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 
     @yield('scripts')
 </body>

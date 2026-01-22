@@ -23,24 +23,12 @@ class ProdutoController extends Controller
         $request->validate([
             'nome' => 'required|string|max:100',
             'descricao' => 'nullable|string',
-            'peso' => 'nullable|integer|min:0',
-            'preço_venda' => 'required|numeric|min:0.01',
-            'estoque_minimo' => 'required|integer|min:0',
-            'estoque_maximo' => 'required|integer|min:0'
+            'peso' => 'nullable|integer|min:0'
         ], [
             'nome.required' => 'O campo nome é obrigatório',
             'nome.max' => 'O nome deve ter no máximo 100 caracteres',
-            'preço_venda.required' => 'O campo preço de venda é obrigatório',
-            'preço_venda.numeric' => 'O preço deve ser um valor numérico',
-            'preço_venda.min' => 'O preço deve ser maior que zero',
             'peso.integer' => 'O peso deve ser um número inteiro',
-            'peso.min' => 'O peso não pode ser negativo',
-            'estoque_minimo.required' => 'O campo estoque mínimo é obrigatório',
-            'estoque_minimo.integer' => 'O estoque mínimo deve ser um número inteiro',
-            'estoque_minimo.min' => 'O estoque mínimo não pode ser negativo',
-            'estoque_maximo.required' => 'O campo estoque máximo é obrigatório',
-            'estoque_maximo.integer' => 'O estoque máximo deve ser um número inteiro',
-            'estoque_maximo.min' => 'O estoque máximo não pode ser negativo'
+            'peso.min' => 'O peso não pode ser negativo'
         ]);
 
         Produto::create($request->all());
@@ -61,24 +49,12 @@ class ProdutoController extends Controller
         $request->validate([
             'nome' => 'required|string|max:100',
             'descricao' => 'nullable|string',
-            'peso' => 'nullable|integer|min:0',
-            'preço_venda' => 'required|numeric|min:0.01',
-            'estoque_minimo' => 'required|integer|min:0',
-            'estoque_maximo' => 'required|integer|min:0'
+            'peso' => 'nullable|integer|min:0'
         ], [
             'nome.required' => 'O campo nome é obrigatório',
             'nome.max' => 'O nome deve ter no máximo 100 caracteres',
-            'preço_venda.required' => 'O campo preço de venda é obrigatório',
-            'preço_venda.numeric' => 'O preço deve ser um valor numérico',
-            'preço_venda.min' => 'O preço deve ser maior que zero',
             'peso.integer' => 'O peso deve ser um número inteiro',
-            'peso.min' => 'O peso não pode ser negativo',
-            'estoque_minimo.required' => 'O campo estoque mínimo é obrigatório',
-            'estoque_minimo.integer' => 'O estoque mínimo deve ser um número inteiro',
-            'estoque_minimo.min' => 'O estoque mínimo não pode ser negativo',
-            'estoque_maximo.required' => 'O campo estoque máximo é obrigatório',
-            'estoque_maximo.integer' => 'O estoque máximo deve ser um número inteiro',
-            'estoque_maximo.min' => 'O estoque máximo não pode ser negativo'
+            'peso.min' => 'O peso não pode ser negativo'
         ]);
 
         $produto->update($request->all());

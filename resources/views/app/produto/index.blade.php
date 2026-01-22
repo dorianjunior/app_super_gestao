@@ -20,9 +20,6 @@
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th style="width: 100px;">Peso (kg)</th>
-                        <th style="width: 120px;">Preço</th>
-                        <th style="width: 100px;">Est. Mín</th>
-                        <th style="width: 100px;">Est. Máx</th>
                         <th style="width: 180px;" class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -33,9 +30,6 @@
                             <td><strong>{{ $produto->nome }}</strong></td>
                             <td><small class="text-muted">{{ Str::limit($produto->descricao, 50) ?? '-' }}</small></td>
                             <td>{{ $produto->peso ?? '-' }}</td>
-                            <td><span class="text-success fw-bold">R$ {{ number_format($produto->preço_venda, 2, ',', '.') }}</span></td>
-                            <td>{{ $produto->estoque_minimo }}</td>
-                            <td>{{ $produto->estoque_maximo }}</td>
                             <td>
                                 <div class="table-actions">
                                     <a href="{{ route('app.produtos.edit', $produto->id) }}"
@@ -61,7 +55,7 @@
                             <td colspan="8">
                                 <div class="table-empty-state">
                                     <i class="fas fa-box-open"></i>
-                                    <p>Nenhum produto cadastrado.</p>
+                                    <p>Ne5hum produto cadastrado.</p>
                                     <a href="{{ route('app.produtos.create') }}" class="btn btn-primary mt-3">
                                         <i class="fas fa-plus-circle me-2"></i>Cadastrar Primeiro Produto
                                     </a>
