@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SiteContato extends Model
+class Cliente extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nome',
-        'telefone',
+        'cpf',
         'email',
-        'motivo_contato',
-        'mensagem'
+        'telefone',
+        'endereco',
+        'cidade',
+        'uf',
+        'cep'
     ];
 }

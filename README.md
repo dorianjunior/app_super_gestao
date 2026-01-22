@@ -76,8 +76,16 @@ CREATE DATABASE app_super_gestao CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_c
 
 ### 6. Execute as Migrations
 
+Execute as migrations para criar todas as tabelas:
+
 ```bash
 php artisan migrate
+```
+
+Se precisar executar apenas a nova migration de clientes:
+
+```bash
+php artisan migrate --path=/database/migrations/2026_01_22_140956_create_clientes_table.php
 ```
 
 ### 7. Execute os Seeders
@@ -131,22 +139,71 @@ Após iniciar o servidor, você pode acessar as seguintes páginas:
 
 | Rota | URL | Descrição |
 |------|-----|-----------|
-| Clientes | `http://localhost:8000/app/clientes` | Gerenciamento de clientes |
+| Dashboard | `http://localhost:8000/app/home` | Dashboard com estatísticas |
 | Fornecedores | `http://localhost:8000/app/fornecedores` | Gerenciamento de fornecedores |
 | Produtos | `http://localhost:8000/app/produtos` | Gerenciamento de produtos |
+| Clientes | `http://localhost:8000/app/clientes` | Gerenciamento de clientes |
 
 ### 📝 Testando as Funcionalidades
 
-**1. Testar Formulário de Contato:**
+**0. Criar Usuário Administrador:**
+
+Antes de testar o sistema, crie um usuário admin executando:
+
+```bash
+php artisan db:seed --class=AdminUserSeeder
+```
+
+**Credenciais de Acesso:**
+- **Email:** admin@supergestao.com.br
+- **Senha:** 123456
+
+**1. Fazer Login no Sistema:**
+- Acesse: `http://localhost:8000/login`
+- Use as credenciais acima
+- Após o login, você será redirecionado para o Dashboard
+
+**2. Dashboard Administrativo:**
+- Acesse: `http://localhost:8000/app/home`
+- Visualize estatísticas rápidas do sistema
+- Use o menu lateral para navegar
+
+**3. Gerenciar Fornecedores (CRUD Completo):**
+- Listar: `http://localhost:8000/app/fornecedores`
+- Criar novo: Clique em "+ Novo Fornecedor"
+- Editar: Clique em "Editar" em qualquer fornecedor
+- Excluir: Clique em "Excluir" (com confirmação)
+Gerenciar Produtos (CRUD Completo):**
+- Listar: `http://localhost:8000/app/produtos`
+- Criar novo: Clique em "+ Novo Produto"
+- Editar: Clique em "Editar" em qualquer produto
+- Excluir: Clique em "Excluir" (com confirmação)
+
+**5. Gerenciar Clientes (CRUD Completo):**
+- 7. Ver Dados Cadastrados:**
+- Fornecedores: `http://localhost:8000/app/fornecedores`
+- Produtos: `http://localhost:8000/app/produtos`
+- Clientes: `http://localhost:8000/app/clientes`
+
+**8
+**6. 
+**4. Testar Formulário de Contato:**
 - Acesse: `http://localhost:8000/contato`
 - Preencha o formulário com nome, telefone, email, motivo e mensagem
 - Submeta o formulário
+- Você verá uma mensagem de sucesso
 - Os dados serão salvos na tabela `site_contatos`
 
-**2. Ver Fornecedores Cadastrados:**
+**5. Ver Fornecedores Cadastrados:**
 - Acesse: `http://localhost:8000/app/fornecedores`
-- Você verá a listagem dos fornecedores criados pelos seeders
+- Vocêtodos os produtos
+App\Models\Produto::all();
 
+# Ver todos os clientes
+Ap9\Models\Cliente::all();
+
+# Ver  verá a listagem dos fornecedores criados pelos seeders
+**6. Verificar Dados no Banco:**
 **3. Verificar Dados no Banco:**
 
 ```bash
@@ -159,11 +216,11 @@ App\Models\Fornecedor::all();
 # Ver todos os contatos
 App\Models\SiteContato::all();
 
-# Contar produtos
-App\Models\Produto::count();
+# Ver usuários
+App\Models\User::all();
 ```
 
-**4. Listar Todas as Rotas Disponíveis:**
+**7. Listar Todas as Rotas Disponíveis:**
 
 ```bash
 php artisan route:list
@@ -202,11 +259,66 @@ ou
 
 ## 📚 Funcionalidades
 
-- Gerenciamento de Fornecedores
-- Cadastro de Produtos
-- Sistema de Contatos
-- Gerenciamento de Unidades
-- Detalhes de Produtos
+### ✅ Implementadas
+
+#### Sistema de Autenticação
+- Login de usuários
+- Logout
+- Proteção de rotas com middleware `auth`
+- Lembrar-me (remember me)
+- Mensagens de erro personalizadas
+
+#### Área Administrativa
+- Dashboard com estatísticas
+- Layout responsivo com menu lateral
+- Sistema de notificações (success/error)
+- Navegação entre módulos
+
+#### CRUD de Fornecedores (Completo)
+- Listagem com paginação
+- Criar novo fornecedor
+- Editar fornecedor existente
+- Excluir fornecedor (com confirmação)
+- Validação de campos
+- Mensagens de feedback
+
+#### Formulário de Contato
+- Validação de campos
+- Salvamento no banco de dados
+- Mensagens de sucesso
+- Preservação de dados em caso de erro (old input)
+- Select com motivos de contato
+
+#### CRUD de Produtos (Completo)
+- Listagem com paginação
+- Criar novo produto com validação
+- Editar produto existente
+- Excluir produto (com confirmação)
+- Campos: nome, descrição, peso, preço, estoque mínimo e máximo
+- Validação de campos numéricos
+
+#### CRUD de Clientes (Completo)
+- Listagem com paginação
+- Criar novo cliente com validação
+- Editar cliente existente
+- Excluir cliente (com confirmação)
+- Campos: nome, CPF, email, telefone, endereço completo
+- Validação de unicidade (CPF e email)
+
+#### Dashboard Melhorado
+- Estatísticas em tempo real
+- Contadores de fornecedores, produtos e clientes
+- Cards com cores diferenciadas
+- Interface limpa e intuitiva
+
+### 🚧 A Implementar
+
+- Sistema de Unidades
+- Detalhes de Produtos (relacionamento)
+- Relacionamentos entre entidades
+- Sistema de permissões/roles
+- Relatórios
+- Dashboard com gráficos
 
 ## 🛠️ Tecnologias Utilizadas
 

@@ -10,9 +10,25 @@
 
         <div class="informacao-pagina">
             <div class="contato-principal">
+                @if(session('success'))
+                    <div style="background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #c3e6cb;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div style="background-color: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #f5c6cb;">
+                        <ul style="margin: 0; padding-left: 20px;">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @component('site.layouts._components.form_contato', ['classe' => 'borda-preta'])
-                <p>A nossa Equipe analisará a sua mensagem e retornará o mais brevemente possível</p>
-                <p>Nosso tempo médio de resposta é de 48 horas.</p>
+                    <p>A nossa Equipe analisará a sua mensagem e retornará o mais brevemente possível</p>
+                    <p>Nosso tempo médio de resposta é de 48 horas.</p>
                 @endcomponent
             </div>
         </div>
