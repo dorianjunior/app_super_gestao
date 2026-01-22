@@ -9,13 +9,21 @@ use App\Models\Produto;
 
 class ProdutoFilialController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $filiais = Filial::all();
-        $produtosFiliais = ProdutoFilial::with(['produto', 'filial'])
-                                        ->orderBy('filial_id')
-                                        ->orderBy('produto_id')
-                                        ->paginate(20);
+
+        $query = ProdutoFilial::with(['produto', 'filial']);
+
+        // Aplicar filtro por filial se fornecido
+        if ($request->filled('filial_id')) {
+            $query->where('filial_id', $request->filial_id);
+        }
+
+        $produtosFiliais = $query->orderBy('filial_id')
+                                 ->orderBy('produto_id')
+                                 ->paginate(20)
+                                 ->appends($request->query());
 
         return view('app.produto-filial.index', compact('produtosFiliais', 'filiais'));
     }
