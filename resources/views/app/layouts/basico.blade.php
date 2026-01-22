@@ -86,7 +86,7 @@
         </div>
 
         <!-- Alertas (agora gerenciados pelo SweetAlert2) -->
-        
+
         @if($errors->any())
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <i class="fas fa-exclamation-triangle me-2"></i>
@@ -137,13 +137,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Para todos os formulários de exclusão
             const deleteForms = document.querySelectorAll('form[onsubmit*="confirm"]');
-            
+
             deleteForms.forEach(form => {
                 form.removeAttribute('onsubmit');
-                
+
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
+
                     Swal.fire({
                         title: 'Tem certeza?',
                         text: "Esta ação não poderá ser revertida!",
