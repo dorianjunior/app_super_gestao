@@ -2,6 +2,8 @@
 
 > Sistema completo de gestão empresarial desenvolvido com Laravel 9 para gerenciamento de fornecedores, produtos, clientes e contatos.
 
+![App Super Gestão](public/img/app_super_gestao.png)
+
 [![Laravel](https://img.shields.io/badge/Laravel-9.x-red.svg)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://www.php.net)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
