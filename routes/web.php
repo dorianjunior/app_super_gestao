@@ -69,6 +69,13 @@ Route::prefix('/app')->middleware('auth')->group(function () {
     Route::get('/produtos-filiais/{id}/editar', [\App\Http\Controllers\ProdutoFilialController::class, 'edit'])->name('app.produtos-filiais.edit');
     Route::put('/produtos-filiais/{id}', [\App\Http\Controllers\ProdutoFilialController::class, 'update'])->name('app.produtos-filiais.update');
     Route::delete('/produtos-filiais/{id}', [\App\Http\Controllers\ProdutoFilialController::class, 'destroy'])->name('app.produtos-filiais.destroy');
+
+    // Rotas de Contatos (Mensagens recebidas do site)
+    Route::get('/contatos', [\App\Http\Controllers\ContatoAdminController::class, 'index'])->name('app.contatos');
+    Route::delete('/contatos/multiple', [\App\Http\Controllers\ContatoAdminController::class, 'destroyMultiple'])->name('app.contatos.destroyMultiple');
+    Route::get('/contatos/{id}', [\App\Http\Controllers\ContatoAdminController::class, 'show'])->name('app.contatos.show');
+    Route::put('/contatos/{id}/status', [\App\Http\Controllers\ContatoAdminController::class, 'updateStatus'])->name('app.contatos.updateStatus');
+    Route::delete('/contatos/{id}', [\App\Http\Controllers\ContatoAdminController::class, 'destroy'])->name('app.contatos.destroy');
 });
 
 Route::fallback(function(){

@@ -74,6 +74,16 @@
                 <i class="fas fa-users"></i>
                 <span>Clientes</span>
             </a>
+            <a class="nav-link {{ request()->routeIs('app.contatos*') ? 'active' : '' }}" href="{{ route('app.contatos') }}">
+                <i class="fas fa-envelope"></i>
+                <span>Mensagens</span>
+                @php
+                    $totalNovos = \App\Models\SiteContato::where('status', 'novo')->count();
+                @endphp
+                @if($totalNovos > 0)
+                    <span class="badge bg-danger rounded-pill ms-auto">{{ $totalNovos }}</span>
+                @endif
+            </a>
         </nav>
     </div>
 
