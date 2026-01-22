@@ -16,13 +16,27 @@ class DatabaseSeeder extends Seeder
     {
         // Ordem de execução importante devido aos relacionamentos
         $this->call([
+            // Primeiro: Usuários (necessário para clientes)
+            UserSeeder::class,
+
+            // Estrutura básica
             UnidadeSeeder::class,
             FornecedorSeeder::class,
             FilialSeeder::class,
+
+            // Produtos e detalhes
             ProdutoSeeder::class,
             ProdutoDetalheSeeder::class,
             ProdutoFilialSeeder::class,
+
+            // Clientes e contatos
+            ClienteSeeder::class,
             SiteContatoSeeder::class,
         ]);
+
+        $this->command->info('');
+        $this->command->info('========================================');
+        $this->command->info('  ✓ Database populado com sucesso!');
+        $this->command->info('========================================');
     }
 }

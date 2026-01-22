@@ -15,6 +15,15 @@ class Produto extends Model
         'peso',
         'preço_venda',
         'estoque_minimo',
-        'estoque_maximo'
+        'estoque_maximo',
+        'fornecedor_id'
     ];
+
+    /**
+     * Relacionamento: Produto pertence a um Fornecedor
+     */
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class);
+    }
 }

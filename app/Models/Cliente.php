@@ -17,6 +17,15 @@ class Cliente extends Model
         'endereco',
         'cidade',
         'uf',
-        'cep'
+        'cep',
+        'user_id'
     ];
+
+    /**
+     * Relacionamento: Cliente pertence a um User (quem cadastrou)
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

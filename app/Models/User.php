@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -41,4 +42,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relacionamento: User tem muitos Clientes (cadastrados por ele)
+     */
+    public function clientes()
+    {
+        return $this->hasMany(Cliente::class);
+    }
+
+    /**
+     * Verificar se o usuário é admin
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Verificar se o usuário é gerente
+     */
+    public function isGerente()
+    {
+        return $this->role === 'gerente';
+    }
+
+    /**
+     * Verificar se o usuário tem permissão (admin ou gerente)
+     */
+    public function hasPermission()
+    {
+        return in_array($this->role, ['admin', 'gerente']);
+    }
 }
