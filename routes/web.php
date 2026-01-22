@@ -12,43 +12,6 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-
-
-Route::get('/', function () {
-    return 'welcome';
-});
-
-Route::get('/sobre', function () {
-    return 'Sobre';
-});
-
-Route::get('/contato', function () {
-    return 'Contato';
-});
-
-Route::get(
-    '/contato/{nome}/{categoria_id}',
-    function (
-        string $nome = 'Sem Nome', //se não passar ela vai para contato
-        int $categoria_id = 1
-    ) {
-        return "<h1> Dados pela url: $nome - $categoria_id </h1>";
-    }
-)->where('nome','[A-Za-z]+')->where('categoria_id', '[0-9]+');
-
-Route::get('/rota1', function () {
-    return '1';
-})->name('site.rota1');
-
-Route::get('/rota2', function () {
-return redirect()->route('site.rota1');
-})->name('site.rota2');
-
-Route::redirect('/rota2','/rota1');
-
-Route::fallback(function(){
-    echo "404 Não encontrada.  <a href='/'>INDEX</a>";
-});
 */
 
 // Rotas públicas do site
@@ -109,7 +72,8 @@ Route::prefix('/app')->middleware('auth')->group(function () {
 });
 
 Route::fallback(function(){
-    echo "404 Não encontrada.  <a href='/'>Ir para INDEX</a>";
+    if (Auth::check()) {
+        return view('app.404');
+    }
+    return view('site.404');
 });
-
-Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class, 'teste'])->name('teste');

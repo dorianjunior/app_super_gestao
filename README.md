@@ -25,6 +25,8 @@ O **App Super Gestão** é um sistema completo de gestão empresarial que oferec
 
 - 🏢 **Fornecedores** - Cadastro e gerenciamento completo
 - 📦 **Produtos** - Controle de estoque e precificação
+- 🏪 **Filiais** - Gerenciamento de múltiplas filiais
+- 💰 **Produtos por Filial** - Controle de preços e estoques diferenciados por filial
 - 👥 **Clientes** - Base de dados de clientes
 - 📞 **Contatos** - Sistema de mensagens e atendimento
 - 📊 **Dashboard** - Visão geral e estatísticas em tempo real
@@ -68,6 +70,19 @@ O **App Super Gestão** é um sistema completo de gestão empresarial que oferec
 - ✅ Edição de cadastros
 - ✅ Exclusão segura
 
+### 🏪 CRUD de Filiais
+- ✅ Listagem de todas as filiais
+- ✅ Cadastro completo de filiais
+- ✅ Edição de informações das filiais
+- ✅ Exclusão protegida
+- ✅ Visualização de produtos por filial
+
+### 💰 Gestão de Produtos por Filial
+- ✅ Controle de preços diferenciados por filial
+- ✅ Gestão de estoque individualizado
+- ✅ Listagem de produtos com suas respectivas filiais
+- ✅ CRUD completo de produtos-filiais
+
 ### 📞 Formulário de Contato
 - ✅ Validação de todos os campos
 - ✅ Motivos predefinidos (Dúvida, Elogio, Reclamação)
@@ -75,12 +90,12 @@ O **App Super Gestão** é um sistema completo de gestão empresarial que oferec
 - ✅ Mensagens de feedback
 
 ### 🚀 Funcionalidades Futuras
-- ⏳ Sistema de Unidades de Medida
-- ⏳ Detalhes e relacionamentos de produtos
 - ⏳ Sistema de permissões e roles
 - ⏳ Relatórios e gráficos avançados
 - ⏳ Exportação de dados (PDF, Excel)
 - ⏳ API RESTful
+- ⏳ Dashboard com gráficos dinâmicos
+- ⏳ Sistema de notificações em tempo real
 
 ## 📋 Requisitos
 
@@ -213,6 +228,8 @@ php artisan serve
 | 📊 Dashboard | `/app/home` | Estatísticas gerais |
 | 🏢 Fornecedores | `/app/fornecedores` | CRUD completo |
 | 📦 Produtos | `/app/produtos` | Gerenciar produtos |
+| 🏪 Filiais | `/app/filiais` | CRUD de filiais |
+| 💰 Produtos-Filiais | `/app/produtos-filiais` | Preços e estoques por filial |
 | 👥 Clientes | `/app/clientes` | Base de clientes |
 
 ### 🗄️ Verificar Dados no Banco
@@ -241,13 +258,20 @@ app_super_gestao/
 │   │   ├── AppController.php
 │   │   ├── ClienteController.php
 │   │   ├── ContatoController.php
+│   │   ├── FilialController.php
 │   │   ├── FornecedorController.php
 │   │   ├── LoginController.php
-│   │   └── ProdutoController.php
+│   │   ├── PrincipalController.php
+│   │   ├── ProdutoController.php
+│   │   ├── ProdutoFilialController.php
+│   │   └── SobreController.php
 │   └── Models/
 │       ├── Cliente.php
+│       ├── Filial.php
 │       ├── Fornecedor.php
 │       ├── Produto.php
+│       ├── ProdutoFilial.php
+│       ├── SiteContato.php
 │       └── User.php
 ├── database/
 │   ├── migrations/
@@ -255,6 +279,7 @@ app_super_gestao/
 ├── resources/views/
 │   ├── app/
 │   └── site/
+│       └── 404.blade.php (Página de erro 404 personalizada)
 └── routes/web.php
 ```
 
@@ -291,6 +316,22 @@ php artisan tinker
 # Ver rotas
 php artisan route:list
 ```
+
+---
+
+---
+
+## 🎨 Recursos Adicionais
+
+### Página 404 Personalizada
+O sistema possui uma página de erro 404 customizada e estilizada que é exibida quando o usuário tenta acessar uma rota inexistente:
+
+- 🎨 Design moderno com animações
+- 🔙 Botão de retorno para a página inicial
+- 📞 Link direto para página de contato
+- 📱 Totalmente responsiva
+
+A página 404 é gerenciada pela rota `fallback` no arquivo `routes/web.php`.
 
 ---
 
