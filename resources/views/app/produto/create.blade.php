@@ -40,6 +40,46 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="fornecedor_id" class="form-label">Fornecedor</label>
+                        <select name="fornecedor_id"
+                                id="fornecedor_id"
+                                class="form-control @error('fornecedor_id') is-invalid @enderror">
+                            <option value="">Selecione um fornecedor</option>
+                            @foreach($fornecedores as $fornecedor)
+                                <option value="{{ $fornecedor->id }}" {{ old('fornecedor_id') == $fornecedor->id ? 'selected' : '' }}>
+                                    {{ $fornecedor->nome }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('fornecedor_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="unidade_id" class="form-label">Unidade</label>
+                        <select name="unidade_id"
+                                id="unidade_id"
+                                class="form-control @error('unidade_id') is-invalid @enderror">
+                            <option value="">Selecione uma unidade</option>
+                            @foreach($unidades as $unidade)
+                                <option value="{{ $unidade->id }}" {{ old('unidade_id', 1) == $unidade->id ? 'selected' : '' }}>
+                                    {{ $unidade->unidade }} - {{ $unidade->descricao }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('unidade_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
                 <textarea name="descricao"

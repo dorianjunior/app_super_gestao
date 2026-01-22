@@ -15,7 +15,10 @@ class ProdutoController extends Controller
 
     public function create()
     {
-        return view('app.produto.create');
+        $fornecedores = \App\Models\Fornecedor::orderBy('nome')->get();
+        $unidades = \DB::table('unidades')->orderBy('unidade')->get();
+
+        return view('app.produto.create', compact('fornecedores', 'unidades'));
     }
 
     public function store(Request $request)
@@ -31,7 +34,14 @@ class ProdutoController extends Controller
             'peso.min' => 'O peso não pode ser negativo'
         ]);
 
-        Produto::create($request->all());
+        $dados = $request->all();
+
+        // Definir unidade_id padrão se não for fornecido
+        if (!isset($dados['unidade_id'])) {
+            $dados['unidade_id'] = 1; // ID da unidade padrão
+        }
+
+        Produto::create($dados);
 
         return redirect()->route('app.produtos')->with('success', 'Produto cadastrado com sucesso!');
     }
@@ -65,6 +75,11 @@ class ProdutoController extends Controller
     public function destroy($id)
     {
         $produto = Produto::findOrFail($id);
+
+        // Deletar registros relacionados antes de deletar o produto
+        \DB::table('produto_detalhes')->where('produto_id', $id)->delete();
+        \DB::table('produto_filiais')->where('produto_id', $id)->delete();
+
         $produto->delete();
 
         return redirect()->route('app.produtos')->with('success', 'Produto removido com sucesso!');

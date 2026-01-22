@@ -13,7 +13,8 @@ class Produto extends Model
         'nome',
         'descricao',
         'peso',
-        'fornecedor_id'
+        'fornecedor_id',
+        'unidade_id'
     ];
 
     /**
@@ -22,6 +23,14 @@ class Produto extends Model
     public function fornecedor()
     {
         return $this->belongsTo(Fornecedor::class);
+    }
+
+    /**
+     * Relacionamento: Produto tem um ProdutoDetalhe
+     */
+    public function produtoDetalhe()
+    {
+        return $this->hasOne(\App\Models\ProdutoDetalhe::class);
     }
 
     /**
