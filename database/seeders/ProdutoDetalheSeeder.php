@@ -91,7 +91,10 @@ class ProdutoDetalheSeeder extends Seeder
         ];
 
         foreach ($detalhes as $detalhe) {
-            DB::table('produto_detalhes')->insert($detalhe);
+            DB::table('produto_detalhes')->updateOrInsert(
+                ['produto_id' => $detalhe['produto_id']],
+                $detalhe
+            );
         }
     }
 }
