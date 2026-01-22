@@ -1,8 +1,11 @@
-<h3>fornecedor index</h3
-{{ teste de texto }}
-{{-- Comentar --}}
-dddd
-@php
+<h3>Fornecedor Index</h3>
 
-echo "teste";
+<p>teste de texto</p>
+
+{{-- Comentar --}}
+
+<p>dddd</p>
+
+@php
+    echo "teste";
 @endphp
