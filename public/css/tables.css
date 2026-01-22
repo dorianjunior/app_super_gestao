@@ -1,9 +1,9 @@
 /* ===========================================
-   TABLES - Estilos de Tabelas
+   TABLES - Estilos de Tabelas com suporte a tema dark/light
    =========================================== */
 
 .table-wrapper {
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0,0,0,.08);
@@ -11,13 +11,14 @@
 
 .table {
     margin-bottom: 0;
+    color: var(--text-primary);
 }
 
 .table thead th {
-    background: #f8f9fa;
-    color: #495057;
+    background: var(--table-header-bg);
+    color: var(--text-primary);
     border: none;
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 2px solid var(--border-color);
     padding: 1rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -35,11 +36,12 @@
 
 .table tbody tr {
     transition: all 0.3s;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--table-row-bg);
 }
 
 .table tbody tr:hover {
-    background-color: #f8f9fa;
+    background-color: var(--table-hover-bg);
     transform: scale(1.01);
     box-shadow: 0 2px 4px rgba(0,0,0,.04);
 }
@@ -51,7 +53,8 @@
 .table tbody td {
     padding: 1rem;
     vertical-align: middle;
-    color: #495057;
+    color: var(--text-primary);
+    background-color: transparent;
 }
 
 .table .table-actions {
@@ -71,12 +74,12 @@
 .table-empty-state {
     text-align: center;
     padding: 3rem;
-    color: #6c757d;
+    color: var(--text-secondary);
 }
 
 .table-empty-state i {
     font-size: 3rem;
-    color: #dee2e6;
+    color: var(--border-color);
     margin-bottom: 1rem;
 }
 
@@ -92,13 +95,13 @@
 }
 
 .pagination .page-link {
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
     color: #007bff;
     padding: 0.6rem 1rem;
     margin: 0 4px;
     border-radius: 8px;
     transition: all 0.3s;
-    background: white;
+    background: var(--card-bg);
 }
 
 .pagination .page-link:hover {
@@ -117,5 +120,5 @@
 
 .pagination .page-item.disabled .page-link {
     background: transparent;
-    color: #dee2e6;
+    color: var(--text-muted);
 }

@@ -28,7 +28,8 @@ O **App Super Gestão** é um sistema completo de gestão empresarial que oferec
 - 🏪 **Filiais** - Gerenciamento de múltiplas filiais
 - 💰 **Produtos por Filial** - Controle de preços e estoques diferenciados por filial
 - 👥 **Clientes** - Base de dados de clientes
-- 📞 **Contatos** - Sistema de mensagens e atendimento
+- 📞 **Contatos** - Formulário de contato no site público
+- 📧 **Gestão de Mensagens** - Painel administrativo para gerenciar contatos recebidos
 - 📊 **Dashboard** - Visão geral e estatísticas em tempo real
 
 ## ✨ Funcionalidades
@@ -83,11 +84,25 @@ O **App Super Gestão** é um sistema completo de gestão empresarial que oferec
 - ✅ Listagem de produtos com suas respectivas filiais
 - ✅ CRUD completo de produtos-filiais
 
-### 📞 Formulário de Contato
+### 📞 Formulário de Contato (Site Público)
 - ✅ Validação de todos os campos
 - ✅ Motivos predefinidos (Dúvida, Elogio, Reclamação)
 - ✅ Salvamento no banco de dados
 - ✅ Mensagens de feedback
+
+### 📧 Gestão de Mensagens de Contato (Área Administrativa)
+- ✅ Listagem completa de todas as mensagens recebidas
+- ✅ Sistema de status (Novo, Lido, Respondido)
+- ✅ Marcação automática como "lido" ao visualizar
+- ✅ Visualização detalhada de cada mensagem
+- ✅ Contador de mensagens novas no menu lateral
+- ✅ Exclusão individual com confirmação SweetAlert2
+- ✅ Exclusão múltipla (seleção em lote)
+- ✅ Filtros por status e data
+- ✅ Estatísticas de mensagens
+- ✅ Links rápidos (WhatsApp, E-mail, Telefone)
+- ✅ Copiar dados de contato
+- ✅ Responder diretamente por e-mail
 
 ### 🚀 Funcionalidades Futuras
 - ⏳ Sistema de permissões e roles
@@ -231,6 +246,7 @@ php artisan serve
 | 🏪 Filiais | `/app/filiais` | CRUD de filiais |
 | 💰 Produtos-Filiais | `/app/produtos-filiais` | Preços e estoques por filial |
 | 👥 Clientes | `/app/clientes` | Base de clientes |
+| 📧 Mensagens | `/app/contatos` | Gerenciar contatos recebidos |
 
 ### 🗄️ Verificar Dados no Banco
 
@@ -257,7 +273,8 @@ app_super_gestao/
 │   ├── Http/Controllers/
 │   │   ├── AppController.php
 │   │   ├── ClienteController.php
-│   │   ├── ContatoController.php
+│   │   ├── ContatoController.php (formulário público)
+│   │   ├── ContatoAdminController.php (gestão administrativa)
 │   │   ├── FilialController.php
 │   │   ├── FornecedorController.php
 │   │   ├── LoginController.php
@@ -278,8 +295,12 @@ app_super_gestao/
 │   └── seeders/
 ├── resources/views/
 │   ├── app/
+│   │   ├── contato/
+│   │   │   ├── index.blade.php (listagem de mensagens)
+│   │   │   └── show.blade.php (detalhes da mensagem)
+│   │   └── 404.blade.php (Página de erro 404 para área logada)
 │   └── site/
-│       └── 404.blade.php (Página de erro 404 personalizada)
+│       └── 404.blade.php (Página de erro 404 pública)
 └── routes/web.php
 ```
 

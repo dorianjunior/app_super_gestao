@@ -6,6 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/android-chrome-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('img/android-chrome-512x512.png') }}">
+    <link rel="manifest" href="{{ asset('img/site.webmanifest') }}">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,6 +26,14 @@
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tables.css') }}">
     <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+
+    <!-- Theme Script - Executa ANTES do body carregar para evitar flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
 <body>
@@ -24,10 +41,16 @@
     <nav class="navbar navbar-expand-lg navbar-admin fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('app.home') }}">
-                <i class="fas fa-chart-line me-2"></i>Super Gestão
+                <img src="{{ asset('img/logo.png') }}" alt="Super Gestão" style="height: 22px;">
+                <span class="ms-2">Super Gestão</span>
             </a>
 
             <div class="d-flex align-items-center">
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="theme-toggle btn btn-sm" title="Alternar tema">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+
                 @auth
                     <span class="navbar-text me-3">
                         <i class="fas fa-user-circle me-2"></i>{{ Auth::user()->name }}
@@ -171,6 +194,35 @@
                 });
             });
         });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        // Atualizar ícone baseado no tema já aplicado
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        updateThemeIcon(currentTheme);
+
+        // Toggle do tema
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
     </script>
 
     @yield('scripts')
