@@ -114,6 +114,61 @@ php artisan serve
 
 A aplicação estará disponível em: `http://localhost:8000`
 
+## 🌐 Acessando o Projeto
+
+Após iniciar o servidor, você pode acessar as seguintes páginas:
+
+### Páginas do Site (Públicas)
+
+| Rota | URL | Descrição |
+|------|-----|-----------|
+| Principal | `http://localhost:8000/` | Página inicial do site |
+| Sobre | `http://localhost:8000/sobre` | Página sobre a empresa |
+| Contato | `http://localhost:8000/contato` | Formulário de contato |
+| Login | `http://localhost:8000/login` | Página de login |
+
+### Área da Aplicação (App)
+
+| Rota | URL | Descrição |
+|------|-----|-----------|
+| Clientes | `http://localhost:8000/app/clientes` | Gerenciamento de clientes |
+| Fornecedores | `http://localhost:8000/app/fornecedores` | Gerenciamento de fornecedores |
+| Produtos | `http://localhost:8000/app/produtos` | Gerenciamento de produtos |
+
+### 📝 Testando as Funcionalidades
+
+**1. Testar Formulário de Contato:**
+- Acesse: `http://localhost:8000/contato`
+- Preencha o formulário com nome, telefone, email, motivo e mensagem
+- Submeta o formulário
+- Os dados serão salvos na tabela `site_contatos`
+
+**2. Ver Fornecedores Cadastrados:**
+- Acesse: `http://localhost:8000/app/fornecedores`
+- Você verá a listagem dos fornecedores criados pelos seeders
+
+**3. Verificar Dados no Banco:**
+
+```bash
+# Acessar o Tinker do Laravel
+php artisan tinker
+
+# Ver todos os fornecedores
+App\Models\Fornecedor::all();
+
+# Ver todos os contatos
+App\Models\SiteContato::all();
+
+# Contar produtos
+App\Models\Produto::count();
+```
+
+**4. Listar Todas as Rotas Disponíveis:**
+
+```bash
+php artisan route:list
+```
+
 ## 🗂️ Estrutura do Projeto
 
 ```
