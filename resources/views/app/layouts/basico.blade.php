@@ -4,266 +4,114 @@
 <head>
     <title>Super Gestão - @yield('titulo')</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ asset('css/estilo_basico.css') }}">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        .topo-admin {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        .topo-admin h1 {
-            margin: 0;
-            font-size: 24px;
-        }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .topo-admin .user-info {
-            font-size: 14px;
-        }
-
-        .menu-lateral {
-            width: 250px;
-            background-color: #34495e;
-            min-height: calc(100vh - 60px);
-            float: left;
-            padding: 0;
-        }
-
-        .menu-lateral ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .menu-lateral ul li {
-            border-bottom: 1px solid #2c3e50;
-        }
-
-        .menu-lateral ul li a {
-            display: block;
-            padding: 15px 20px;
-            color: #ecf0f1;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .menu-lateral ul li a:hover,
-        .menu-lateral ul li a.active {
-            background-color: #2c3e50;
-        }
-
-        .conteudo-admin {
-            margin-left: 250px;
-            padding: 30px;
-            background-color: #ecf0f1;
-            min-height: calc(100vh - 60px);
-        }
-
-        .titulo-pagina-admin {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .titulo-pagina-admin h1 {
-            margin: 0;
-            color: #2c3e50;
-            font-size: 28px;
-        }
-
-        .conteudo-pagina-admin {
-            background-color: white;
-            padding: 25px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn-primary {
-            background-color: #3498db;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #2980b9;
-        }
-
-        .btn-success {
-            background-color: #2ecc71;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: #27ae60;
-        }
-
-        .btn-danger {
-            background-color: #e74c3c;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background-color: #c0392b;
-        }
-
-        .btn-warning {
-            background-color: #f39c12;
-            color: white;
-        }
-
-        .btn-warning:hover {
-            background-color: #d68910;
-        }
-
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table th,
-        table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table th {
-            background-color: #34495e;
-            color: white;
-            font-weight: bold;
-        }
-
-        table tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        .actions {
-            display: inline-flex;
-            gap: 5px;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('css/admin-layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 </head>
 
 <body>
-    <div class="topo-admin">
-        <h1>Super Gestão - Área Administrativa</h1>
-        <div class="user-info">
-            @auth
-                {{ Auth::user()->name }} |
-                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" style="background: none; border: none; color: white; cursor: pointer; text-decoration: underline;">Sair</button>
-                </form>
-            @else
-                <a href="{{ route('login') }}" style="color: white;">Login</a>
-            @endauth
+    <!-- Navbar Superior -->
+    <nav class="navbar navbar-expand-lg navbar-admin fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('app.home') }}">
+                <i class="fas fa-chart-line me-2"></i>Super Gestão
+            </a>
+
+            <div class="d-flex align-items-center">
+                @auth
+                    <span class="navbar-text me-3">
+                        <i class="fas fa-user-circle me-2"></i>{{ Auth::user()->name }}
+                    </span>
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-logout btn-sm">
+                            <i class="fas fa-sign-out-alt me-1"></i>Sair
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-logout btn-sm">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </a>
+                @endauth
+            </div>
         </div>
+    </nav>
+
+    <!-- Sidebar Lateral -->
+    <div class="sidebar">
+        <nav class="nav flex-column">
+            <a class="nav-link {{ request()->routeIs('app.home') ? 'active' : '' }}" href="{{ route('app.home') }}">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a class="nav-link {{ request()->routeIs('app.fornecedores*') ? 'active' : '' }}" href="{{ route('app.fornecedores') }}">
+                <i class="fas fa-truck"></i>
+                <span>Fornecedores</span>
+            </a>
+            <a class="nav-link {{ request()->routeIs('app.produtos*') ? 'active' : '' }}" href="{{ route('app.produtos') }}">
+                <i class="fas fa-box"></i>
+                <span>Produtos</span>
+            </a>
+            <a class="nav-link {{ request()->routeIs('app.clientes*') ? 'active' : '' }}" href="{{ route('app.clientes') }}">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </a>
+        </nav>
     </div>
 
-    <div class="menu-lateral">
-        <ul>
-            <li><a href="{{ route('app.home') }}" class="{{ request()->routeIs('app.home') ? 'active' : '' }}">Dashboard</a></li>
-            <li><a href="{{ route('app.fornecedores') }}" class="{{ request()->routeIs('app.fornecedores*') ? 'active' : '' }}">Fornecedores</a></li>
-            <li><a href="{{ route('app.produtos') }}" class="{{ request()->routeIs('app.produtos*') ? 'active' : '' }}">Produtos</a></li>
-            <li><a href="{{ route('app.clientes') }}" class="{{ request()->routeIs('app.clientes*') ? 'active' : '' }}">Clientes</a></li>
-        </ul>
-    </div>
-
-    <div class="conteudo-admin">
-        <div class="titulo-pagina-admin">
-            <h1>@yield('titulo')</h1>
+    <!-- Conteúdo Principal -->
+    <div class="main-content" style="margin-top: 56px;">
+        <!-- Header da Página -->
+        <div class="page-header">
+            <h1><i class="fas fa-{{ request()->routeIs('app.home') ? 'home' : (request()->routeIs('app.fornecedores*') ? 'truck' : (request()->routeIs('app.produtos*') ? 'box' : 'users')) }} me-2"></i>@yield('titulo')</h1>
+            @yield('header-actions')
         </div>
 
-        <div class="conteudo-pagina-admin">
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <!-- Alertas -->
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
-            @if(session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-circle me-2"></i>{{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul style="margin: 0; padding-left: 20px;">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Atenção!</strong> Corrija os erros abaixo:
+                <ul class="mb-0 mt-2">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
-            @yield('conteudo')
-        </div>
+        <!-- Conteúdo da Página -->
+        @yield('conteudo')
     </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    @yield('scripts')
 </body>
-
 </html>

@@ -1,0 +1,153 @@
+/* ===========================================
+   FORMS - Estilos de Formulários
+   =========================================== */
+
+.form-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    padding: 2rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-control,
+.form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+}
+
+.form-control:hover,
+.form-select:hover {
+    border-color: #80bdff;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group-text {
+    background: #f8f9fa;
+    color: #495057;
+    border: 2px solid #e9ecef;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    padding: 0.75rem 1rem;
+}
+
+.input-group .form-control {
+    border-radius: 0 8px 8px 0;
+}
+
+/* Textarea */
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Checkbox e Radio */
+.form-check-input {
+    border: 2px solid #007bff;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.form-check-label {
+    margin-left: 0.5rem;
+    color: #495057;
+}
+
+/* Mensagens de Validação */
+.invalid-feedback {
+    color: #eb3349;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.valid-feedback {
+    color: #56ab2f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.is-invalid {
+    border-color: #eb3349 !important;
+}
+
+.is-valid {
+    border-color: #56ab2f !important;
+}
+
+/* Botões de Formulário */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e9ecef;
+}
+
+/* Select Customizado */
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Helper Text */
+.form-text {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Required Indicator */
+.required::after {
+    content: " *";
+    color: #eb3349;
+}
+
+/* File Input */
+.form-control[type="file"] {
+    padding: 0.5rem 1rem;
+}
+
+.form-control[type="file"]::-webkit-file-upload-button {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-control[type="file"]::-webkit-file-upload-button:hover {
+    background: #0056b3;
+}

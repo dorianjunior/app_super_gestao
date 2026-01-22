@@ -3,28 +3,47 @@
 @section('titulo', 'Novo Fornecedor')
 
 @section('conteudo')
-    <form action="{{ route('app.fornecedores.store') }}" method="POST">
-        @csrf
+    <div class="form-card">
+        <form action="{{ route('app.fornecedores.store') }}" method="POST">
+            @csrf
 
-        <div class="form-group">
-            <label for="nome">Nome *</label>
-            <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}" required>
-            @error('nome')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label required">Nome</label>
+                        <input type="text"
+                               name="nome"
+                               id="nome"
+                               class="form-control @error('nome') is-invalid @enderror"
+                               value="{{ old('nome') }}"
+                               required>
+                        @error('nome')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label for="site">Site</label>
-            <input type="text" name="site" id="site" class="form-control" value="{{ old('site') }}" placeholder="https://www.exemplo.com.br">
-            @error('site')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="site" class="form-label">Site</label>
+                        <input type="text"
+                               name="site"
+                               id="site"
+                               class="form-control @error('site') is-invalid @enderror"
+                               value="{{ old('site') }}"
+                               placeholder="https://www.exemplo.com.br">
+                        @error('site')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="uf">UF *</label>
-            <select name="uf" id="uf" class="form-control" required>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="uf" class="form-label required">UF</label>
+                        <select name="uf" id="uf" class="form-select @error('uf') is-invalid @enderror" required>
                 <option value="">Selecione</option>
                 <option value="AC" {{ old('uf') == 'AC' ? 'selected' : '' }}>Acre</option>
                 <option value="AL" {{ old('uf') == 'AL' ? 'selected' : '' }}>Alagoas</option>
@@ -52,24 +71,38 @@
                 <option value="SC" {{ old('uf') == 'SC' ? 'selected' : '' }}>Santa Catarina</option>
                 <option value="SP" {{ old('uf') == 'SP' ? 'selected' : '' }}>São Paulo</option>
                 <option value="SE" {{ old('uf') == 'SE' ? 'selected' : '' }}>Sergipe</option>
-                <option value="TO" {{ old('uf') == 'TO' ? 'selected' : '' }}>Tocantins</option>
-            </select>
-            @error('uf')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                            <option value="TO" {{ old('uf') == 'TO' ? 'selected' : '' }}>Tocantins</option>
+                        </select>
+                        @error('uf')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
-            @error('email')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                <div class="col-md-9">
+                    <div class="mb-3">
+                        <label for="email" class="form-label required">E-mail</label>
+                        <input type="email"
+                               name="email"
+                               id="email"
+                               class="form-control @error('email') is-invalid @enderror"
+                               value="{{ old('email') }}"
+                               required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
 
-        <div style="margin-top: 20px;">
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="{{ route('app.fornecedores') }}" class="btn btn-danger">Cancelar</a>
-        </div>
-    </form>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save me-2"></i>Salvar Fornecedor
+                </button>
+                <a href="{{ route('app.fornecedores') }}" class="btn btn-secondary">
+                    <i class="fas fa-times me-2"></i>Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
 @endsection

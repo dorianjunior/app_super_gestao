@@ -3,73 +3,62 @@
 @section('titulo', 'Login')
 
 @section('conteudo')
-    <div class="conteudo-pagina">
-        <div class="titulo-pagina">
-            <h1>Login</h1>
-        </div>
+    <div class="login-container">
+        <div class="login-card">
+            <h1><i class="fas fa-lock me-2"></i>Login</h1>
+            
+            @if($errors->has('error'))
+                <div class="alert alert-danger alert-modern" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    {{ $errors->first('error') }}
+                </div>
+            @endif
 
-        <div class="informacao-pagina">
-            <div style="width: 30%; margin: auto;">
-                <form action="{{ route('login.autenticar') }}" method="POST">
-                    @csrf
+            <form action="{{ route('login.autenticar') }}" method="POST" class="form-modern">
+                @csrf
 
-                    @if($errors->has('error'))
-                        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 15px; border-radius: 4px; border: 1px solid #f5c6cb;">
-                            {{ $errors->first('error') }}
-                        </div>
-                    @endif
-
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
                     <input
+                        id="email"
                         name="email"
                         type="email"
-                        placeholder="E-mail"
-                        class="borda-preta"
+                        class="form-control @error('email') is-invalid @enderror"
+                        placeholder="seu@email.com"
                         value="{{ old('email') }}"
                         required>
                     @error('email')
-                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                    <br>
+                </div>
 
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
                     <input
+                        id="password"
                         name="password"
                         type="password"
-                        placeholder="Senha"
-                        class="borda-preta"
+                        class="form-control @error('password') is-invalid @enderror"
+                        placeholder="••••••••"
                         required>
                     @error('password')
-                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                    <br>
+                </div>
 
-                    <div style="margin-bottom: 10px;">
-                        <label style="color: #333; font-size: 14px;">
-                            <input type="checkbox" name="remember"> Lembrar-me
-                        </label>
-                    </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                    <label class="form-check-label" for="remember">
+                        Lembrar-me
+                    </label>
+                </div>
 
-                    <button type="submit" class="borda-preta">Entrar</button>
-                </form>
-            </div>
+                <button type="submit" class="btn btn-submit">
+                    <i class="fas fa-sign-in-alt me-2"></i>ENTRAR
+                </button>
+            </form>
         </div>
     </div>
 
-    <div class="rodape">
-        <div class="redes-sociais">
-            <h2>Redes sociais</h2>
-            <img src="{{ asset('img/facebook.png') }}">
-            <img src="{{ asset('img/linkedin.png') }}">
-            <img src="{{ asset('img/youtube.png') }}">
-        </div>
-        <div class="area-contato">
-            <h2>Contato</h2>
-            <span>(11) 3333-4444</span>
-            <br>
-            <span>supergestao@dominio.com.br</span>
-        </div>
-        <div class="localizacao">
-            <h2>Localização</h2>
-            <img src="{{ asset('img/mapa.png') }}">
-        </div>
-    </div>
+    @include('site.layouts._partials.footer')
 @endsection

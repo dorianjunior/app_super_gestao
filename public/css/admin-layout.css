@@ -1,0 +1,134 @@
+/* ===========================================
+   ADMIN LAYOUT - Layout Principal
+   =========================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Superior */
+.navbar-admin {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    padding: 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-admin .navbar-brand {
+    color: #495057 !important;
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+}
+
+.navbar-admin .navbar-text {
+    color: #6c757d;
+}
+
+.navbar-admin .btn-logout {
+    background: #e9ecef;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.navbar-admin .btn-logout:hover {
+    background: #dee2e6;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Sidebar Lateral */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #ffffff;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 2px 0 10px rgba(0,0,0,.05);
+    border-right: 1px solid #e9ecef;
+}
+
+.sidebar .nav-link {
+    color: #6c757d;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar .nav-link:hover {
+    background: #f8f9fa;
+    border-left-color: #007bff;
+    padding-left: 1.8rem;
+    color: #495057;
+}
+
+.sidebar .nav-link.active {
+    background: #e7f1ff;
+    border-left-color: #007bff;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.sidebar .nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    margin-left: 260px;
+    padding: 2rem;
+    min-height: calc(100vh - 56px);
+}
+
+/* Cards de Conteúdo */
+.content-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-header {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}

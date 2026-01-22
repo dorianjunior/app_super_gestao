@@ -3,105 +3,142 @@
 @section('titulo', 'Novo Cliente')
 
 @section('conteudo')
-    <form action="{{ route('app.clientes.store') }}" method="POST">
-        @csrf
+    <div class="form-card">
+        <form action="{{ route('app.clientes.store') }}" method="POST">
+            @csrf
 
-        <div class="form-group">
-            <label for="nome">Nome *</label>
-            <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}" required>
-            @error('nome')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label required">Nome Completo</label>
+                        <input type="text"
+                               name="nome"
+                               id="nome"
+                               class="form-control @error('nome') is-invalid @enderror"
+                               value="{{ old('nome') }}"
+                               required>
+                        @error('nome')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label for="cpf">CPF * (formato: 000.000.000-00)</label>
-            <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf') }}" placeholder="000.000.000-00" maxlength="14" required>
-            @error('cpf')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label required">CPF</label>
+                        <input type="text"
+                               name="cpf"
+                               id="cpf"
+                               class="form-control @error('cpf') is-invalid @enderror"
+                               value="{{ old('cpf') }}"
+                               placeholder="000.000.000-00"
+                               maxlength="14"
+                               required>
+                        @error('cpf')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
-            @error('email')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="email" class="form-label required">E-mail</label>
+                        <input type="email"
+                               name="email"
+                               id="email"
+                               class="form-control @error('email') is-invalid @enderror"
+                               value="{{ old('email') }}"
+                               required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label for="telefone">Telefone *</label>
-            <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone') }}" placeholder="(00) 00000-0000" required>
-            @error('telefone')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label required">Telefone</label>
+                        <input type="text"
+                               name="telefone"
+                               id="telefone"
+                               class="form-control @error('telefone') is-invalid @enderror"
+                               value="{{ old('telefone') }}"
+                               placeholder="(00) 00000-0000"
+                               required>
+                        @error('telefone')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="endereco">Endereço</label>
-            <input type="text" name="endereco" id="endereco" class="form-control" value="{{ old('endereco') }}">
-            @error('endereco')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text"
+                       name="endereco"
+                       id="endereco"
+                       class="form-control @error('endereco') is-invalid @enderror"
+                       value="{{ old('endereco') }}"
+                       placeholder="Rua, número, complemento">
+                @error('endereco')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="form-group">
-            <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade" class="form-control" value="{{ old('cidade') }}">
-            @error('cidade')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="mb-3">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text"
+                               name="cidade"
+                               id="cidade"
+                               class="form-control @error('cidade') is-invalid @enderror"
+                               value="{{ old('cidade') }}">
+                        @error('cidade')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label for="uf">UF</label>
-            <select name="uf" id="uf" class="form-control">
-                <option value="">Selecione</option>
-                <option value="AC" {{ old('uf') == 'AC' ? 'selected' : '' }}>Acre</option>
-                <option value="AL" {{ old('uf') == 'AL' ? 'selected' : '' }}>Alagoas</option>
-                <option value="AP" {{ old('uf') == 'AP' ? 'selected' : '' }}>Amapá</option>
-                <option value="AM" {{ old('uf') == 'AM' ? 'selected' : '' }}>Amazonas</option>
-                <option value="BA" {{ old('uf') == 'BA' ? 'selected' : '' }}>Bahia</option>
-                <option value="CE" {{ old('uf') == 'CE' ? 'selected' : '' }}>Ceará</option>
-                <option value="DF" {{ old('uf') == 'DF' ? 'selected' : '' }}>Distrito Federal</option>
-                <option value="ES" {{ old('uf') == 'ES' ? 'selected' : '' }}>Espírito Santo</option>
-                <option value="GO" {{ old('uf') == 'GO' ? 'selected' : '' }}>Goiás</option>
-                <option value="MA" {{ old('uf') == 'MA' ? 'selected' : '' }}>Maranhão</option>
-                <option value="MT" {{ old('uf') == 'MT' ? 'selected' : '' }}>Mato Grosso</option>
-                <option value="MS" {{ old('uf') == 'MS' ? 'selected' : '' }}>Mato Grosso do Sul</option>
-                <option value="MG" {{ old('uf') == 'MG' ? 'selected' : '' }}>Minas Gerais</option>
-                <option value="PA" {{ old('uf') == 'PA' ? 'selected' : '' }}>Pará</option>
-                <option value="PB" {{ old('uf') == 'PB' ? 'selected' : '' }}>Paraíba</option>
-                <option value="PR" {{ old('uf') == 'PR' ? 'selected' : '' }}>Paraná</option>
-                <option value="PE" {{ old('uf') == 'PE' ? 'selected' : '' }}>Pernambuco</option>
-                <option value="PI" {{ old('uf') == 'PI' ? 'selected' : '' }}>Piauí</option>
-                <option value="RJ" {{ old('uf') == 'RJ' ? 'selected' : '' }}>Rio de Janeiro</option>
-                <option value="RN" {{ old('uf') == 'RN' ? 'selected' : '' }}>Rio Grande do Norte</option>
-                <option value="RS" {{ old('uf') == 'RS' ? 'selected' : '' }}>Rio Grande do Sul</option>
-                <option value="RO" {{ old('uf') == 'RO' ? 'selected' : '' }}>Rondônia</option>
-                <option value="RR" {{ old('uf') == 'RR' ? 'selected' : '' }}>Roraima</option>
-                <option value="SC" {{ old('uf') == 'SC' ? 'selected' : '' }}>Santa Catarina</option>
-                <option value="SP" {{ old('uf') == 'SP' ? 'selected' : '' }}>São Paulo</option>
-                <option value="SE" {{ old('uf') == 'SE' ? 'selected' : '' }}>Sergipe</option>
-                <option value="TO" {{ old('uf') == 'TO' ? 'selected' : '' }}>Tocantins</option>
-            </select>
-            @error('uf')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="uf" class="form-label">UF</label>
+                        <select name="uf" id="uf" class="form-select @error('uf') is-invalid @enderror">
+                            @include('app._partials.uf-options', ['selected' => old('uf')])
+                        </select>
+                        @error('uf')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label for="cep">CEP</label>
-            <input type="text" name="cep" id="cep" class="form-control" value="{{ old('cep') }}" placeholder="00000-000" maxlength="10">
-            @error('cep')
-                <span style="color: red; font-size: 12px;">{{ $message }}</span>
-            @enderror
-        </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text"
+                               name="cep"
+                               id="cep"
+                               class="form-control @error('cep') is-invalid @enderror"
+                               value="{{ old('cep') }}"
+                               placeholder="00000-000"
+                               maxlength="10">
+                        @error('cep')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
 
-        <div style="margin-top: 20px;">
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="{{ route('app.clientes') }}" class="btn btn-danger">Cancelar</a>
-        </div>
-    </form>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-save me-2"></i>Salvar Cliente
+                </button>
+                <a href="{{ route('app.clientes') }}" class="btn btn-secondary">
+                    <i class="fas fa-times me-2"></i>Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
 @endsection

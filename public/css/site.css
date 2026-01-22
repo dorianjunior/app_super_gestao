@@ -1,0 +1,428 @@
+/* ===========================
+   Site Público - CSS Moderno
+   =========================== */
+
+/* Reset e Variáveis */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --text-dark: #343a40;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background: var(--light-bg);
+    line-height: 1.6;
+}
+
+/* ===========================
+   Navbar Moderno
+   =========================== */
+.navbar-site {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    padding: 1rem 0;
+}
+
+.navbar-site .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-site .navbar-brand img {
+    height: 45px;
+    width: auto;
+}
+
+.navbar-site .nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem !important;
+    transition: all 0.3s;
+    border-radius: 6px;
+}
+
+.navbar-site .nav-link:hover {
+    background: var(--primary-color);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+.navbar-site .nav-link.active {
+    background: var(--primary-color);
+    color: white !important;
+}
+
+/* ===========================
+   Hero Section (Página Principal)
+   =========================== */
+.hero-section {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1976d2;
+    padding: 80px 0;
+    min-height: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s;
+    color: #0d47a1;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #1565c0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    animation: fadeInLeft 1s;
+}
+
+.feature-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+}
+
+.feature-item span {
+    font-size: 1.1rem;
+    color: #1565c0;
+}
+
+.video-preview {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    transition: transform 0.3s;
+}
+
+.video-preview:hover {
+    transform: scale(1.02);
+}
+
+.video-preview img {
+    width: 100%;
+    height: auto;
+}
+
+/* ===========================
+   Card de Contato
+   =========================== */
+.contact-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,.15);
+    animation: fadeInRight 0.8s;
+}
+
+.contact-card h2 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.contact-card p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ===========================
+   Formulários Modernos
+   =========================== */
+.form-modern .form-control,
+.form-modern .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s;
+    background: #f8f9fa;
+}
+
+.form-modern .form-control:focus,
+.form-modern .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+    background: white;
+}
+
+.form-modern textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-modern .btn-submit {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.form-modern .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* ===========================
+   Páginas de Conteúdo
+   =========================== */
+.content-page {
+    background: white;
+    min-height: calc(100vh - 400px);
+    padding: 60px 0;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.page-title h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #007bff 0%, #0d6efd 100%);
+    border-radius: 2px;
+}
+
+.content-box {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    margin-bottom: 2rem;
+}
+
+/* ===========================
+   Login Page
+   =========================== */
+.login-container {
+    min-height: calc(100vh - 400px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.login-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,.1);
+    width: 100%;
+    max-width: 450px;
+    animation: fadeInUp 0.6s;
+}
+
+.login-card h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.login-card .form-check {
+    margin-bottom: 1.5rem;
+}
+
+.login-card .form-check-label {
+    color: var(--text-muted);
+}
+
+/* ===========================
+   Footer Moderno
+   =========================== */
+.footer-site {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #495057;
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    border-top: 3px solid #007bff;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+    color: #0d47a1;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.footer-section p,
+.footer-section span {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    opacity: 0.7;
+    transition: all 0.3s;
+    cursor: pointer;
+    filter: grayscale(20%);
+}
+
+.social-icons img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    filter: grayscale(0%);
+}
+
+.footer-map img {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #dee2e6;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* ===========================
+   Alerts Modernos
+   =========================== */
+.alert-modern {
+    border-radius: 10px;
+    border: none;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.alert-modern.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+}
+
+.alert-modern.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+}
+
+/* ===========================
+   Animações
+   =========================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .page-title h1 {
+        font-size: 1.8rem;
+    }
+
+    .login-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-card {
+        padding: 2rem 1.5rem;
+    }
+}

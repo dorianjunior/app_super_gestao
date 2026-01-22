@@ -1,0 +1,129 @@
+/* ===========================================
+   ADMIN LAYOUT - Layout Principal
+   =========================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Superior */
+.navbar-admin {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    padding: 0;
+}
+
+.navbar-admin .navbar-brand {
+    color: white !important;
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+}
+
+.navbar-admin .navbar-text {
+    color: rgba(255,255,255,0.9);
+}
+
+.navbar-admin .btn-logout {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.navbar-admin .btn-logout:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+
+/* Sidebar Lateral */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #2c3e50;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 2px 0 10px rgba(0,0,0,.1);
+}
+
+.sidebar .nav-link {
+    color: #ecf0f1;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar .nav-link:hover {
+    background: rgba(52, 152, 219, 0.1);
+    border-left-color: #3498db;
+    padding-left: 1.8rem;
+}
+
+.sidebar .nav-link.active {
+    background: rgba(52, 152, 219, 0.15);
+    border-left-color: #3498db;
+    font-weight: 600;
+}
+
+.sidebar .nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    margin-left: 260px;
+    padding: 2rem;
+    min-height: calc(100vh - 56px);
+}
+
+/* Cards de Conteúdo */
+.content-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-header {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}

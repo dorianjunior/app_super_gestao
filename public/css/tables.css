@@ -1,0 +1,121 @@
+/* ===========================================
+   TABLES - Estilos de Tabelas
+   =========================================== */
+
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: #f8f9fa;
+    color: #495057;
+    border: none;
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+}
+
+.table thead th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.table thead th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.table tbody tr {
+    transition: all 0.3s;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+    box-shadow: 0 2px 4px rgba(0,0,0,.04);
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    color: #495057;
+}
+
+.table .table-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Tabela Responsiva */
+.table-responsive {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Empty State */
+.table-empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #6c757d;
+}
+
+.table-empty-state i {
+    font-size: 3rem;
+    color: #dee2e6;
+    margin-bottom: 1rem;
+}
+
+.table-empty-state p {
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+/* Paginação Moderna */
+.pagination {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+.pagination .page-link {
+    border: 1px solid #dee2e6;
+    color: #007bff;
+    padding: 0.6rem 1rem;
+    margin: 0 4px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    background: white;
+}
+
+.pagination .page-link:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: translateY(-2px);
+}
+
+.pagination .page-item.active .page-link {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.pagination .page-item.disabled .page-link {
+    background: transparent;
+    color: #dee2e6;
+}
