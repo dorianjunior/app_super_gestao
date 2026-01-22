@@ -27,6 +27,7 @@ Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'sair'])->
 
 // Rotas protegidas da área administrativa
 Route::prefix('/app')->middleware('auth')->group(function () {
+    Route::get('/', [\App\Http\Controllers\AppController::class, 'home'])->name('app.home');
     Route::get('/home', [\App\Http\Controllers\AppController::class, 'home'])->name('app.home');
 
     // Rotas de Fornecedores (CRUD completo)
